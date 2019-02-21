@@ -1,0 +1,153 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GFX/Sprites/BFT - Mega Metroidvania Tileset.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.96554, 23.8063 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.97128, 13.4443 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 24.0151, 8.21739 )
+
+[node name="Node2D" type="Node2D" index="0"]
+
+[node name="Wall" type="Sprite" parent="." index="0"]
+
+position = Vector2( 86.7561, -97.4516 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 96, 48, 48 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Wall_Window" type="Sprite" parent="." index="1"]
+
+position = Vector2( 32.7105, -42.4881 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 144, 48, 48 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Pillar" type="Sprite" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( 81.8036, -40.4978 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 96, 16, 48 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Pillar" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pillar/StaticBody2D" index="0"]
+
+shape = SubResource( 4 )
+
+[node name="Stair" type="Sprite" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( 115.638, -35.1905 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 96, 16, 48 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Stair" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stair/Area2D" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="Spikes" type="Sprite" parent="." index="4"]
+
+position = Vector2( 150.136, -113.474 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 96, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Area2D" type="Area2D" parent="Spikes" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Area2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -7.93312, 7.13628, -7.93312, 5.0944, -4.61508, -0.5718, -3.18576, -0.520752, -0.276093, 4.58393, 1.15321, 4.17556, 3.04195, -0.520752, 4.98174, -0.367615, 8.04454, 5.24754, 8.04454, 7.95303, -7.98418, 7.85093 )
+
+[node name="Simple_Wall" type="Sprite" parent="." index="5"]
+
+position = Vector2( 209.844, -37.1807 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 144, 96, 48, 48 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Pipe" type="Sprite" parent="." index="6"]
+
+position = Vector2( 145.492, -77.6494 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 240, 32, 32 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Wall_Window2" type="Sprite" parent="." index="7"]
+
+position = Vector2( 206.527, -102.859 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 96, 144, 48, 48 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Ground" type="Sprite" parent="." index="8"]
+
+position = Vector2( 99.1454, -148.783 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 48, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D" index="0"]
+
+shape = SubResource( 5 )
+
+

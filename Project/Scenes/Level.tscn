@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+
+[node name="Level" type="Node2D" index="0"]
+
+[node name="TileMap" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 2
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 851968, 2, 0, 851969, 0, 0, 851972, 0, 0, 851975, 0, 0, 851978, 0, 0, 851981, 0, 0, 851984, 0, 0, 851987, 0, 0, 851990, 5, 0, 851993, 1, 0, 851996, 7, 0, 851999, 5, 0, 852001, 2, 0, 917526, 6, 0, 983071, 4, 0, 983072, 4, 0, 1048576, 8, 0, 1048579, 8, 0, 1048582, 8, 0, 1048585, 8, 0, 1048588, 8, 0, 1048591, 8, 0, 1048594, 8, 0, 1048597, 8, 0, 1048600, 8, 0, 1048603, 8, 0, 1048606, 8, 0, 1048609, 8, 0 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="Player" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 73.5291, 232.766 )
+
+[node name="Camera2D" type="Camera2D" parent="Player" index="2"]
+
+position = Vector2( 82.9478, -48.5986 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.3, 0.3 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Limit", "Smoothing", "Transform" ]
+
+
