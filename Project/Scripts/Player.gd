@@ -5,14 +5,22 @@ var motion = Vector2()
 var speed = 140
 var direction = true #Se true, é direita
 
-const GRAVITY = 200
+const GRAVITY = 600
+const JUMP_FORCE = 400
+const UP = Vector2(0, -1) #Para que o salto seja para cima
 
 func _physics_process(delta):
-	move()
 	fall(delta)
+	move()
+	jump()
+	move_and_slide(motion, UP)
 
 func fall(delta):
-	motion.y += delta * GRAVITY
+	if is_on_floor() or is_on_ceiling():
+		motion.y = 0
+	else:
+		play_animation('fall')
+		motion.y += delta * GRAVITY
 
 func play_animation(animation):
 	$AnimatedSprite.play(animation)
@@ -37,4 +45,9 @@ func move():
 	else:
 		play_animation('idle')
 		motion.x = 0
-	move_and_slide(motion)
+
+func jump():
+	if is_on_floor():
+		if Input.is_action_pressed("ui_up"):
+			play_animation('jump')
+			motion.y = -JUMP_FORCE

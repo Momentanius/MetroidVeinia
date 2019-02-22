@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Opposing Bloodlines.ogg-0d1a5c3110519eb5101e8cfe82fc46e5.oggstr"
+
+[deps]
+
+source_file="res://SFX/Music/Opposing Bloodlines.ogg"
+dest_files=[ "res://.import/Opposing Bloodlines.ogg-0d1a5c3110519eb5101e8cfe82fc46e5.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

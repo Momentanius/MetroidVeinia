@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Bloody Tears.ogg-b38fd898de38c328da83d70bb021996e.oggstr"
+
+[deps]
+
+source_file="res://SFX/Music/Bloody Tears.ogg"
+dest_files=[ "res://.import/Bloody Tears.ogg-b38fd898de38c328da83d70bb021996e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

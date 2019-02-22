@@ -1,17 +1,20 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://GFX/Character/Idle/0.png" type="Texture" id=2]
 [ext_resource path="res://GFX/Character/Idle/2.png" type="Texture" id=3]
 [ext_resource path="res://GFX/Character/Idle/1.png" type="Texture" id=4]
-[ext_resource path="res://GFX/Character/Walk/0.png" type="Texture" id=5]
-[ext_resource path="res://GFX/Character/Walk/1.png" type="Texture" id=6]
-[ext_resource path="res://GFX/Character/Walk/3.png" type="Texture" id=7]
-[ext_resource path="res://GFX/Character/Walk/2.png" type="Texture" id=8]
-[ext_resource path="res://GFX/Character/Walk/4.png" type="Texture" id=9]
-[ext_resource path="res://GFX/Character/Walk/5.png" type="Texture" id=10]
-[ext_resource path="res://GFX/Character/Walk/6.png" type="Texture" id=11]
-[ext_resource path="res://GFX/Character/Walk/7.png" type="Texture" id=12]
+[ext_resource path="res://GFX/Character/Jump/2.png" type="Texture" id=5]
+[ext_resource path="res://GFX/Character/Walk/0.png" type="Texture" id=6]
+[ext_resource path="res://GFX/Character/Walk/1.png" type="Texture" id=7]
+[ext_resource path="res://GFX/Character/Walk/3.png" type="Texture" id=8]
+[ext_resource path="res://GFX/Character/Walk/2.png" type="Texture" id=9]
+[ext_resource path="res://GFX/Character/Walk/4.png" type="Texture" id=10]
+[ext_resource path="res://GFX/Character/Walk/5.png" type="Texture" id=11]
+[ext_resource path="res://GFX/Character/Walk/6.png" type="Texture" id=12]
+[ext_resource path="res://GFX/Character/Walk/7.png" type="Texture" id=13]
+[ext_resource path="res://GFX/Character/Jump/0.png" type="Texture" id=14]
+[ext_resource path="res://GFX/Character/Jump/1.png" type="Texture" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -21,10 +24,20 @@ animations = [ {
 "name": "idle",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "fall",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "walk",
 "speed": 9.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 15 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "jump",
+"speed": 3.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -32,7 +45,7 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 10, 21.9968 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -44,9 +57,9 @@ _sections_unfolded = [ "Collision" ]
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
 frames = SubResource( 1 )
-animation = "walk"
-frame = 3
+animation = "fall"
 playing = true
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
