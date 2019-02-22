@@ -4,6 +4,7 @@ var motion = Vector2()
 
 var speed = 140
 var direction = true #Se true, é direita
+var falling
 
 const GRAVITY = 600
 const JUMP_FORCE = 400
@@ -19,7 +20,8 @@ func fall(delta):
 	if is_on_floor() or is_on_ceiling():
 		motion.y = 0
 	else:
-		play_animation('fall')
+		if falling:
+			play_animation('fall')
 		motion.y += delta * GRAVITY
 
 func play_animation(animation):
@@ -51,3 +53,4 @@ func jump():
 		if Input.is_action_pressed("ui_up"):
 			play_animation('jump')
 			motion.y = -JUMP_FORCE
+			play_animation('jump')

@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/Camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://SFX/Music/Opposing Bloodlines.ogg" type="AudioStream" id=4]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" index="0"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -32,6 +32,7 @@ _sections_unfolded = [ "Cell", "Collision" ]
 [node name="Player" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 59.8653, 159.79 )
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Camera2D" parent="Player" index="2" instance=ExtResource( 3 )]
 
