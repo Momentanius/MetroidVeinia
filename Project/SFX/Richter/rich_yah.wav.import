@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rich_yah.wav-cea976be95f06a4d34124bf42a73359b.sample"
+
+[deps]
+
+source_file="res://SFX/Richter/rich_yah.wav"
+dest_files=[ "res://.import/rich_yah.wav-cea976be95f06a4d34124bf42a73359b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
