@@ -25,7 +25,7 @@ __meta__ = {
 
 frames = ExtResource( 2 )
 animation = "attack"
-frame = 5
+frame = 4
 playing = true
 _sections_unfolded = [ "Transform" ]
 
@@ -37,7 +37,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="AttackTimer" type="Timer" parent="." index="2"]
 
 process_mode = 1
-wait_time = 1.0
+wait_time = 0.75
 one_shot = true
 autostart = false
 

@@ -6,12 +6,15 @@ var speed = 140
 var direction = true #Se true, é direita
 var is_falling = false
 var is_attacking = false
+var is_ducking = false
+var is_jumping = false
 
 var jump_max = 0
 
 const GRAVITY = 600
 const JUMP_FORCE = 250
 const UP = Vector2(0, -1) #Para que o salto seja para cima
+const DUCK_OFFSET = 7
 
 func _physics_process(delta):
 	fall(delta)
@@ -40,19 +43,20 @@ func flipar():
 
 func move():
 	if !is_attacking:
-		if Input.is_action_pressed('ui_right') and not Input.is_action_pressed('ui_left'):
-			direction = true
-			flipar()
-			play_animation('walk')
-			motion.x = speed
-		elif Input.is_action_pressed('ui_left') and not Input.is_action_pressed('ui_right'):
-			direction = false
-			flipar()
-			play_animation('walk')
-			motion.x = -speed
-		else:
-			play_animation('idle')
-			motion.x = 0
+		if !is_ducking:
+			if Input.is_action_pressed('ui_right') and not Input.is_action_pressed('ui_left'):
+				direction = true
+				flipar()
+				play_animation('walk')
+				motion.x = speed
+			elif Input.is_action_pressed('ui_left') and not Input.is_action_pressed('ui_right'):
+				direction = false
+				flipar()
+				play_animation('walk')
+				motion.x = -speed
+			else:
+				play_animation('idle')
+				motion.x = 0
 
 func attack():
 	if Input.is_action_just_pressed('ui_attack') and !is_attacking:
@@ -63,11 +67,18 @@ func attack():
 		play_animation('attack')
 
 func down():
-	if Input.is_action_just_pressed('ui_down') and not Input.is_action_pressed('ui_left') and not Input.is_action_pressed('ui_right') and not Input.is_action_pressed('ui_up'):
-		motion.x = 0
-		play_animation('get_down')
-	elif Input.is_action_pressed('ui_down') and not Input.is_action_pressed('ui_left') and not Input.is_action_pressed('ui_right') and not Input.is_action_pressed('ui_up'):
-		play_animation('duck')
+	if !is_jumping:
+		if Input.is_action_just_pressed('ui_down') and not Input.is_action_pressed('ui_left') and not Input.is_action_pressed('ui_right') and not Input.is_action_pressed('ui_up'):
+			motion.x = 0
+			is_ducking = true
+			play_animation('get_down')
+			if Input.is_action_pressed('ui_down'):
+				play_animation('duck')
+				$AnimatedSprite.offset.y = DUCK_OFFSET
+		
+		if Input.is_action_just_released('ui_down'):
+			$AnimatedSprite.offset.y = 0
+			is_ducking = false
 
 
 func jump():
@@ -76,6 +87,9 @@ func jump():
 			motion.y = -JUMP_FORCE
 	if motion.y < 0:
 		play_animation('jump')
+		is_jumping = true
+	else:
+		is_jumping = false
 
 
 func _on_AttackTimer_timeout():
