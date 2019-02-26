@@ -11,12 +11,13 @@ extents = Vector2( 10, 22.1554 )
 
 [node name="Player" type="KinematicBody2D" index="0"]
 
+z_index = 50
 input_pickable = false
 collision_layer = 1
 collision_mask = 2
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Transform" ]
+_sections_unfolded = [ "Collision", "Material", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -24,9 +25,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
 frames = ExtResource( 2 )
-animation = "attack"
-frame = 4
-playing = true
+animation = "idle"
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]

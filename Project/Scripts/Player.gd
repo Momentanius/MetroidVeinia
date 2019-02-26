@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 var motion = Vector2()
+var whip = preload("res://Scenes/Whip.tscn") 
+var new_whip
 
 var speed = 140
 var direction = true #Se true, é direita
@@ -55,8 +57,8 @@ func move():
 				play_animation('walk')
 				motion.x = -speed
 			else:
-				play_animation('idle')
 				motion.x = 0
+				play_animation('idle')
 
 func attack():
 	if Input.is_action_just_pressed('ui_attack') and !is_attacking:
@@ -65,6 +67,13 @@ func attack():
 		$AttackTimer.start()
 		is_attacking = true
 		play_animation('attack')
+		new_whip = whip.instance()
+		get_tree().get_root().add_child(new_whip)
+		new_whip.position = position
+		new_whip.z_index = 5
+		new_whip.get_child(0).offset.x = 40
+		new_whip.get_child(0).offset.y = -10
+		
 
 func down():
 	if !is_jumping:
@@ -94,3 +103,5 @@ func jump():
 
 func _on_AttackTimer_timeout():
 	is_attacking = false
+	new_whip.queue_free()
+	
